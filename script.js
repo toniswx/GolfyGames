@@ -356,12 +356,17 @@ const app = {
   
   //Get all games series related to the selected game
   gameSeries : (series) =>{
-            
+
 
 
     const gameSeriesContainer = document.querySelector(".grid")
-    
+             
+   if(series.results.length != 0){
+
+
+
     series.results.forEach(game =>{
+        
         gameSeriesContainer.innerHTML +=`
        <div class="game-series">
        <div class="text-game"><p>${game.name}</p></div>
@@ -369,22 +374,37 @@ const app = {
        </div>
         `
     })
+   }
+   else{
+
+    gameSeriesContainer.innerHTML = "<p>No additional series found</p>"
+
+   }
+  
+    
    
 
   },
   gameAddons : (addons) =>{
-        
-    
 
-    const gameSeriesContainer = document.querySelector(".grid-editions")
-    addons.results.forEach(game =>{
+     const gameSeriesContainer = document.querySelector(".grid-editions")   
+
+    if(addons.results.length != 0){
+       addons.results.forEach(game =>{
         gameSeriesContainer.innerHTML +=`
        <div class="game-series">
        <div class="text-game"><p>${game.name}</p></div>
        <div class="img-game"><img src="${game.background_image}"></div>
        </div>
         `
-    })
+    }) 
+    }
+    else{
+        gameSeriesContainer.innerHTML = "<p>No additional DLCs found</p>"
+    }
+
+    
+    
 },
 
 

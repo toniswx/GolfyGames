@@ -159,7 +159,7 @@ margin-top: 6em;
 .grid{
     width: 90%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     gap: 10px;
@@ -178,6 +178,9 @@ margin-top: 6em;
     width: 90%;
     height: 40vh;
   
+}
+.grid p{
+    color: white;
 }
 .game-series img:hover{
     cursor: pointer;
