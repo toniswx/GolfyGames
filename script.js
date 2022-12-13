@@ -71,14 +71,22 @@ const app = {
         },
         
 
-        
+        //Will create every item on the home page grid
         createItem : (data) =>{
+           
             
-             const category = "games"
-
+          //Set the default category
+            const category = "games"
+         //Get main container
             const grid_contrainer = document.querySelector(".grid-content")       
+         //Clean the main container for new searchs
             grid_contrainer.innerHTML =""
+
+
+        //Retrive every game
             data.results.forEach(game => {
+
+                //The api sets two tips of item,this code bellow filters so it don't bug
                 if(game.background_image === undefined){
                     grid_contrainer.innerHTML +=`
                     <a href=""  class="item" data-id="${game.id}" data-category="${category}">
@@ -101,6 +109,11 @@ const app = {
             app.selectItem()
             app.pagination(data)  
         },
+
+        //Paginations works with new links
+        //Code bellow basicly scans for "next" on api response,if response is "Yes",it creates a new A element and links it to the new page
+        //ifthe response is that there's "previus" page,it creates a new element and links it to the new page
+        //
         pagination : (data) =>{ 
     
         const paginationContainer = document.querySelector(".pagination")
@@ -366,13 +379,20 @@ const app = {
 
 
     series.results.forEach(game =>{
-        
-        gameSeriesContainer.innerHTML +=`
+
+        if(game.background_image != null){
+            gameSeriesContainer.innerHTML +=`
        <div class="game-series">
        <div class="text-game"><p>${game.name}</p></div>
        <div class="img-game"><img src="${game.background_image}"></div>
        </div>
-        `
+        `  
+        }
+        else{
+            return
+        }
+        
+      
     })
    }
    else{
